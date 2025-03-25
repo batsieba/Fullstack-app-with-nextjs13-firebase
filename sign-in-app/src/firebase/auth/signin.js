@@ -1,6 +1,8 @@
 import firebase_app from "../config";
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 
+
+
 const auth = getAuth(firebase_app);
 
 export default async function signIn(email, password) {
@@ -10,6 +12,7 @@ export default async function signIn(email, password) {
         result = await signInWithEmailAndPassword(auth, email, password);
     } catch (e) {
         error = e;
+        alert("Wrong credentials. Please try again.");
     }
 
     return { result, error };
